@@ -11,18 +11,34 @@
       crossorigin="anonymous"
     />
     <link rel="shortcut icon" href="./4geeks.ico" />
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <nav class="navbar fixed-top bg-body-tertiary">
+      <div class="container-fluid d-flex justify-content-center">
+        <h2 class="contador-text">This page will refresh automatically in <span id="contador">10</span> seconds.</h1>
+      </div>
+    </nav>
+    
+    <div class="background container-fluid">
+      <div class="card container-fluid" id="carta">
+        <div class="card-inner">
+          <div class="card-corner top-left" id="esquinaSuperiorIzquierda"></div>
+          <div class="card-corner bottom-right" id="esquinaInferiorDerecha"></div>
+          <div class="card-suit" id="paloCentro"></div>
+          <div class="card-number" id="numeroCentro"></div>
+          <div class="card-suit bottom" id="paloInferior"></div>
+        </div>
+      </div>
+      
+    <div class="d-grid gap-2 col-3 mx-auto mt-4">
+        <button type="button" class="btn btn-outline-warning" onclick="refreshCard()">Click if you want another card</button>
+    </div>
+    
+    </div>
+      <div class="fixed-bottom p-4 container-fluid d-flex justify-content-center">
+        <p class="text-light">Pedro made this with ❤️ for  <a href="https://www.4geeksacademy.com"> 4Geeks Academy</a></p>
       </div>
     </div>
   </body>
