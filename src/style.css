@@ -2,13 +2,15 @@
 
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background: url("./assets/img/4aces.jpg") center/cover;
+  flex-direction: column;
 }
+
 .contador-text {
   color: rgba(253, 178, 118, 0.757);
   font-family: Verdana;
@@ -44,13 +46,12 @@ body {
 }
 
 .top-left {
-  top: 5px;
-  left: 5px;
+  left: 20px;
 }
 
 .bottom-right {
   bottom: 5px;
-  right: 5px;
+  right: 20px;
   transform: rotate(180deg);
 }
 
@@ -74,4 +75,8 @@ body {
 
 .rojo {
   background: rgba(255, 0, 0, 0.8);
+}
+
+label {
+  color: beige;
 }

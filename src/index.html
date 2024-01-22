@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>Random Card Generator</title>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -15,31 +15,69 @@
   </head>
 
   <body>
-    <nav class="navbar fixed-top bg-body-tertiary">
+    <!-- navbar -->
+
+    <nav class="navbar fixed-top bg-body-tertiary position-relative">
       <div class="container-fluid d-flex justify-content-center">
-        <h2 class="contador-text">This page will refresh automatically in <span id="contador">10</span> seconds.</h1>
+        <h2 class="contador-text">
+          This page will refresh automatically in
+          <span id="counter">10</span> seconds.
+        </h2>
       </div>
     </nav>
-    
-    <div class="background container-fluid">
-      <div class="card container-fluid" id="carta">
-        <div class="card-inner">
-          <div class="card-corner top-left" id="esquinaSuperiorIzquierda"></div>
-          <div class="card-corner bottom-right" id="esquinaInferiorDerecha"></div>
-          <div class="card-suit" id="paloCentro"></div>
-          <div class="card-number" id="numeroCentro"></div>
-          <div class="card-suit bottom" id="paloInferior"></div>
-        </div>
+
+    <!-- input user -->
+
+    <div class="background container">
+      <div class="d-grid gap-2 col-3 mx-auto mb-4 position-relative">
+        <label for="widthInput">Width:</label>
+        <input
+          type="text"
+          id="widthInput"
+          placeholder="Type the width in pixels and press ENTER"
+        />
+
+        <label for="heightInput">Height:</label>
+        <input
+          type="text"
+          id="heightInput"
+          placeholder="Type the height in pixels and press ENTER"
+        />
       </div>
-      
-    <div class="d-grid gap-2 col-3 mx-auto mt-4">
-        <button type="button" class="btn btn-outline-warning" onclick="refreshCard()">Click if you want another card</button>
     </div>
-    
-    </div>
-      <div class="fixed-bottom p-4 container-fluid d-flex justify-content-center">
-        <p class="text-light">Pedro made this with ❤️ for  <a href="https://www.4geeksacademy.com"> 4Geeks Academy</a></p>
+
+    <!-- card -->
+
+    <div class="card" id="carta">
+      <div class="card-inner">
+        <div class="card-corner top-left" id="leftCorner"></div>
+        <div class="card-corner bottom-right" id="rightCorner"></div>
+        <div class="card-suit bottom" id="bottomSuit"></div>
       </div>
+    </div>
+
+    <!-- button -->
+
+    <div class="d-grid gap-2 col-3 mx-auto mt-4 position-relative">
+      <button
+        type="button"
+        id="myButton"
+        class="btn btn-outline-warning"
+        onclick="refreshCard()"
+      >
+        CLICK if you want another card or CHANGE width and height
+      </button>
+    </div>
+
+    <!-- footer -->
+
+    <div
+      class="p-4 container-fluid d-flex justify-content-center position-relative"
+    >
+      <p class="text-light">
+        Pedro made this with ❤️ for
+        <a href="https://www.4geeksacademy.com"> 4Geeks Academy</a>
+      </p>
     </div>
   </body>
 </html>

@@ -6,81 +6,125 @@ import "./assets/img/4geeks.ico";
 import "./assets/img/4aces.jpg";
 
 window.addEventListener("load", function() {
-  // Función para generar un valor aleatorio entre min y max (ambos incluidos)
+  // Random value
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Función para obtener un palo aleatorio
+  // Random Suit
   function getRandomSuit() {
     let suits = ["♠", "♥", "♦", "♣"];
     let randomIndex = getRandomInt(0, suits.length - 1);
     return suits[randomIndex];
   }
 
-  // Función para actualizar la carta con valores aleatorios
+  // Refresh Card
   function refreshCard() {
-    // Obtener elementos internos de la carta
-    let esquinaSuperiorIzquierda = document.getElementById(
-      "esquinaSuperiorIzquierda"
-    );
-    let esquinaInferiorDerecha = document.getElementById(
-      "esquinaInferiorDerecha"
-    );
-    let paloInferior = document.getElementById("paloInferior");
+    let leftCorner = document.getElementById("leftCorner");
+    let rightCorner = document.getElementById("rightCorner");
+    let bottomSuit = document.getElementById("bottomSuit");
 
-    // Generar valores aleatorios
-    let valor = getRandomInt(1, 13); // Valores del As al Rey
+    // Random value card
+    let valueCard = getRandomInt(1, 13); // Value ACE to KING
     let palo = getRandomSuit();
 
-    // Valores A, J, Q, K
+    // Value A, J, Q, K
 
-    if (valor === 1) {
-      valor = "A";
-    } else if (valor === 11) {
-      valor = "J";
-    } else if (valor === 12) {
-      valor = "Q";
-    } else if (valor === 13) {
-      valor = "K";
+    if (valueCard === 1) {
+      valueCard = "A";
+    } else if (valueCard === 11) {
+      valueCard = "J";
+    } else if (valueCard === 12) {
+      valueCard = "Q";
+    } else if (valueCard === 13) {
+      valueCard = "K";
     } else {
-      valor = valor.toString();
+      valueCard = valueCard.toString();
     }
 
-    // Actualizar contenido
-    esquinaSuperiorIzquierda.textContent = valor;
-    esquinaInferiorDerecha.textContent = valor;
-    paloInferior.textContent = palo;
+    // Declared Card element
+    let carta = document.getElementById("carta");
+    if (!carta) {
+      carta = document.createElement("div");
+      carta.id = "carta";
+      document.body.appendChild(carta); // Añadir 'carta' al cuerpo del documento
+    }
 
-    //Corazones y Diamantes Rojos
+    // Width and heigth user input
+    let widthInput = document.getElementById("widthInput").value;
+    let heightInput = document.getElementById("heightInput").value;
+
+    // Number input validate
+    if (isNaN(widthInput) || isNaN(heightInput)) {
+      alert("Por favor, ingrese valores numéricos para width y height.");
+      return;
+    }
+
+    // + PX to card
+    carta.style.width = widthInput + "px";
+    carta.style.height = heightInput + "px";
+
+    // Refresh content
+    leftCorner.textContent = valueCard;
+    rightCorner.textContent = valueCard;
+    bottomSuit.textContent = palo;
+
+    //Red color heart and Diamond
     if (palo === "♥" || palo === "♦") {
-      esquinaSuperiorIzquierda.style.color = "red";
-      esquinaInferiorDerecha.style.color = "red";
-      paloInferior.style.color = "red";
+      leftCorner.style.color = "red";
+      rightCorner.style.color = "red";
+      bottomSuit.style.color = "red";
     } else {
-      esquinaSuperiorIzquierda.style.color = "";
-      esquinaInferiorDerecha.style.color = "";
-      paloInferior.style.color = "";
+      leftCorner.style.color = "";
+      rightCorner.style.color = "";
+      bottomSuit.style.color = "";
     }
   }
 
   let restSeconds = 10;
 
+  // Seconds countdown
   function refreshCount() {
-    const contadorElemento = document.getElementById("contador");
-    contadorElemento.textContent = restSeconds;
+    const counterElement = document.getElementById("counter");
+    counterElement.textContent = restSeconds;
 
     if (restSeconds === 0) {
-      // Actualizar la página después de 10 segundos
+      // Refresh page in 10 seconds
       location.reload();
     } else {
       restSeconds--;
     }
   }
 
-  // Iniciar el contador al cargar la página y actualizar cada segundo
+  // Get witdh and height
+  const widthInput = document.getElementById("widthInput");
+  const heightInput = document.getElementById("heightInput");
+
+  // Enter key for width
+  widthInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      refreshCard();
+    }
+  });
+
+  // Enter key for height
+  heightInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      refreshCard();
+    }
+  });
+
+  // Start count when refresh page
   setInterval(refreshCount, 1000);
 
-  // Ejemplo de uso
+  // New card button
+  const myButton = document.getElementById("myButton");
+
+  if (myButton) {
+    myButton.addEventListener("click", function() {
+      refreshCard();
+    });
+  }
+
   refreshCard();
 });
